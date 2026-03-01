@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -22,9 +23,14 @@ namespace XrmAutomationHealthScannerPlugin
     {
         private Settings mySettings;
 
-        public string RepositoryName => "test";
+        #region Github details 
+        public string RepositoryName => "xrm-automation-health-scanner";
         public string UserName => "calsora";
-        public string HelpUrl => "http://www.google.com";
+        public string HelpUrl => $"https://github.com/{UserName}/{RepositoryName}/issues/new";
+
+        public string ReadMe => $"https://github.com/{UserName}/{RepositoryName}/blob/master/README.md";
+        #endregion
+
 
         public MyPluginControl()
         {
@@ -184,11 +190,9 @@ namespace XrmAutomationHealthScannerPlugin
 
             // Ensure the grid has the current service so it can be used if needed by the grid control
             crmGridView2.OrganizationService = newService;
-
-
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void scanAutomationsButton1_Click(object sender, EventArgs e)
         {
             // Ensure connection and then load disabled automations
             ExecuteMethod(LoadDisabledAutomations);
@@ -200,13 +204,22 @@ namespace XrmAutomationHealthScannerPlugin
 
         }
 
-        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void reportAIssueToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = HelpUrl,
+                UseShellExecute = true
+            });
         }
 
-        private void splitContainer2_Panel1_Paint(object sender, PaintEventArgs e)
+        private void readmeToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = ReadMe,
+                UseShellExecute = true
+            });
 
         }
     }
