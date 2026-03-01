@@ -33,9 +33,13 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.reportAIssueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.readmeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.nameSearchInput = new XrmToolBox.Controls.TextBoxWithPlaceholder();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.bizrulescheckBox = new System.Windows.Forms.CheckBox();
             this.cloudflowscheckBox = new System.Windows.Forms.CheckBox();
             this.workflowscheckBox = new System.Windows.Forms.CheckBox();
@@ -45,6 +49,7 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,13 +75,13 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton1,
             this.toolStripSeparator1,
-            this.toolStripButton2});
+            this.toolStripButton2,
+            this.toolStripDropDownButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(782, 31);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
-            this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
             // 
             // toolStripButton1
             // 
@@ -102,7 +107,34 @@
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Size = new System.Drawing.Size(186, 28);
             this.toolStripButton2.Text = "Scan inactive automations";
-            this.toolStripButton2.Click += new System.EventHandler(this.button1_Click);
+            this.toolStripButton2.Click += new System.EventHandler(this.scanAutomationsButton1_Click);
+            // 
+            // toolStripDropDownButton1
+            // 
+            this.toolStripDropDownButton1.BackgroundImage = global::XrmAutomationHealthScannerPlugin.Properties.Resources.github;
+            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.reportAIssueToolStripMenuItem,
+            this.readmeToolStripMenuItem});
+            this.toolStripDropDownButton1.Image = global::XrmAutomationHealthScannerPlugin.Properties.Resources.github;
+            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(34, 28);
+            this.toolStripDropDownButton1.Text = "toolStripDropDownButton1";
+            // 
+            // reportAIssueToolStripMenuItem
+            // 
+            this.reportAIssueToolStripMenuItem.Name = "reportAIssueToolStripMenuItem";
+            this.reportAIssueToolStripMenuItem.Size = new System.Drawing.Size(234, 26);
+            this.reportAIssueToolStripMenuItem.Text = "Raise issue / question";
+            this.reportAIssueToolStripMenuItem.Click += new System.EventHandler(this.reportAIssueToolStripMenuItem_Click);
+            // 
+            // readmeToolStripMenuItem
+            // 
+            this.readmeToolStripMenuItem.Name = "readmeToolStripMenuItem";
+            this.readmeToolStripMenuItem.Size = new System.Drawing.Size(234, 26);
+            this.readmeToolStripMenuItem.Text = "Readme";
+            this.readmeToolStripMenuItem.Click += new System.EventHandler(this.readmeToolStripMenuItem_Click);
             // 
             // splitContainer2
             // 
@@ -117,9 +149,9 @@
             this.splitContainer2.Panel1.AccessibleDescription = "hello";
             this.splitContainer2.Panel1.AccessibleName = "Helllo";
             this.splitContainer2.Panel1.AllowDrop = true;
+            this.splitContainer2.Panel1.Controls.Add(this.groupBox2);
             this.splitContainer2.Panel1.Controls.Add(this.toolStrip1);
             this.splitContainer2.Panel1.Controls.Add(this.groupBox1);
-            this.splitContainer2.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer2_Panel1_Paint);
             // 
             // splitContainer2.Panel2
             // 
@@ -128,30 +160,39 @@
             this.splitContainer2.SplitterDistance = 120;
             this.splitContainer2.TabIndex = 3;
             // 
-            // groupBox1
+            // groupBox2
             // 
-            this.groupBox1.Controls.Add(this.nameSearchInput);
-            this.groupBox1.Controls.Add(this.bizrulescheckBox);
-            this.groupBox1.Controls.Add(this.cloudflowscheckBox);
-            this.groupBox1.Controls.Add(this.workflowscheckBox);
-            this.groupBox1.Location = new System.Drawing.Point(13, 43);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(582, 86);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Filter options";
+            this.groupBox2.Controls.Add(this.nameSearchInput);
+            this.groupBox2.Location = new System.Drawing.Point(395, 43);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(200, 86);
+            this.groupBox2.TabIndex = 3;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Search by name";
             // 
             // nameSearchInput
             // 
             this.nameSearchInput.Enabled = false;
             this.nameSearchInput.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.nameSearchInput.Location = new System.Drawing.Point(349, 39);
+            this.nameSearchInput.Location = new System.Drawing.Point(6, 37);
             this.nameSearchInput.Name = "nameSearchInput";
-            this.nameSearchInput.Placeholder = null;
+            this.nameSearchInput.Placeholder = "Type to filter";
             this.nameSearchInput.Size = new System.Drawing.Size(152, 22);
             this.nameSearchInput.TabIndex = 1;
             this.nameSearchInput.Tag = true;
             this.nameSearchInput.TextChanged += new System.EventHandler(this.textBoxWithPlaceholder1_TextChanged);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.bizrulescheckBox);
+            this.groupBox1.Controls.Add(this.cloudflowscheckBox);
+            this.groupBox1.Controls.Add(this.workflowscheckBox);
+            this.groupBox1.Location = new System.Drawing.Point(13, 43);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(363, 86);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Filter options";
             // 
             // bizrulescheckBox
             // 
@@ -166,7 +207,7 @@
             this.bizrulescheckBox.Tag = "2";
             this.bizrulescheckBox.Text = "Business rules";
             this.bizrulescheckBox.UseVisualStyleBackColor = true;
-            this.bizrulescheckBox.CheckedChanged += new System.EventHandler(this.button1_Click);
+            this.bizrulescheckBox.CheckedChanged += new System.EventHandler(this.scanAutomationsButton1_Click);
             // 
             // cloudflowscheckBox
             // 
@@ -181,7 +222,7 @@
             this.cloudflowscheckBox.Tag = "5";
             this.cloudflowscheckBox.Text = "Cloud flows";
             this.cloudflowscheckBox.UseVisualStyleBackColor = true;
-            this.cloudflowscheckBox.CheckedChanged += new System.EventHandler(this.button1_Click);
+            this.cloudflowscheckBox.CheckedChanged += new System.EventHandler(this.scanAutomationsButton1_Click);
             // 
             // workflowscheckBox
             // 
@@ -196,7 +237,7 @@
             this.workflowscheckBox.Tag = "0";
             this.workflowscheckBox.Text = "Workflows";
             this.workflowscheckBox.UseVisualStyleBackColor = true;
-            this.workflowscheckBox.CheckedChanged += new System.EventHandler(this.button1_Click);
+            this.workflowscheckBox.CheckedChanged += new System.EventHandler(this.scanAutomationsButton1_Click);
             // 
             // MyPluginControl
             // 
@@ -211,6 +252,8 @@
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -237,5 +280,9 @@
         private System.Windows.Forms.CheckBox workflowscheckBox;
         private System.Windows.Forms.CheckBox bizrulescheckBox;
         private XrmToolBox.Controls.TextBoxWithPlaceholder nameSearchInput;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
+        private System.Windows.Forms.ToolStripMenuItem reportAIssueToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem readmeToolStripMenuItem;
     }
 }

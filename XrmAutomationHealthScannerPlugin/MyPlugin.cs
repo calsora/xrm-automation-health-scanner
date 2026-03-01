@@ -6,14 +6,14 @@ using System.Linq;
 using System.Reflection;
 using XrmToolBox.Extensibility;
 using XrmToolBox.Extensibility.Interfaces;
-using XrmUnusedScannerPlugin;
+using XrmAutomationHealthScannerPlugin;
 
 namespace XrmAutomationHealthScannerPlugin
 {
     // Do not forget to update version number and author (company attribute) in AssemblyInfo.cs class
     // To generate Base64 string for Images below, you can use https://www.base64-image.de/
     [Export(typeof(IXrmToolBoxPlugin)),
-        ExportMetadata("Name", "Automation Health Scanner2"),
+        ExportMetadata("Name", "Automation Health Scanner"),
         ExportMetadata("Description", "A simple plugin to scan inactive automations found within the workflows table."),
         // Please specify the base64 content of a 32x32 pixels image
         ExportMetadata("SmallImageBase64", null),
