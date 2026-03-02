@@ -31,10 +31,21 @@ namespace XrmAutomationHealthScannerPlugin
         public string ReadMe => $"https://github.com/{UserName}/{RepositoryName}/blob/master/README.md";
         #endregion
 
+        private Timer SearchDebounceTimer;
 
         public MyPluginControl()
         {
             InitializeComponent();
+
+            // Used to create a delay to avoid uneccesary calls to Dataverse
+            SearchDebounceTimer = new Timer
+            { Interval = 500 };
+
+            SearchDebounceTimer.Tick += (s, ev) =>
+            {
+                SearchDebounceTimer.Stop();
+                ExecuteMethod(LoadDisabledAutomations);
+            };
         }
 
         private void MyPluginControl_Load(object sender, EventArgs e)
@@ -76,12 +87,12 @@ namespace XrmAutomationHealthScannerPlugin
             CloseTool();
         }
 
-        // Loads all deactivated workflows (statecode = 1) and binds a simple projection to the grid
+        // Loads all deactivated workflows and binds a simple projection to the grid
         private void LoadDisabledAutomations()
         {
             WorkAsync(new WorkAsyncInfo
             {
-                Message = "Getting disabled workflows",
+                Message = "Getting inactive automations",
                 Work = (worker, args) =>
                 {
                     var query = new QueryExpression("workflow")
@@ -200,24 +211,27 @@ namespace XrmAutomationHealthScannerPlugin
 
         private void textBoxWithPlaceholder1_TextChanged(object sender, EventArgs e)
         {
-            ExecuteMethod(LoadDisabledAutomations);
-
+            SearchDebounceTimer.Stop();
+            SearchDebounceTimer.Start();
         }
 
         private void reportAIssueToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Process.Start(new ProcessStartInfo
-            {
-                FileName = HelpUrl,
-                UseShellExecute = true
-            });
+            LaunchGithubPage(HelpUrl);
+
         }
 
         private void readmeToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            LaunchGithubPage(ReadMe);
+
+        }
+
+        private void LaunchGithubPage(string filename)
+        {
             Process.Start(new ProcessStartInfo
             {
-                FileName = ReadMe,
+                FileName = filename,
                 UseShellExecute = true
             });
 
