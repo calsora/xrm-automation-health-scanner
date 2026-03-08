@@ -33,9 +33,6 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.reportAIssueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.readmeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.nameSearchInput = new XrmToolBox.Controls.TextBoxWithPlaceholder();
@@ -43,6 +40,9 @@
             this.bizrulescheckBox = new System.Windows.Forms.CheckBox();
             this.cloudflowscheckBox = new System.Windows.Forms.CheckBox();
             this.workflowscheckBox = new System.Windows.Forms.CheckBox();
+            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.reportAIssueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.readmeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.crmGridView2)).BeginInit();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
@@ -108,33 +108,6 @@
             this.toolStripButton2.Size = new System.Drawing.Size(186, 28);
             this.toolStripButton2.Text = "Scan inactive automations";
             this.toolStripButton2.Click += new System.EventHandler(this.scanAutomationsButton1_Click);
-            // 
-            // toolStripDropDownButton1
-            // 
-            this.toolStripDropDownButton1.BackgroundImage = global::XrmAutomationHealthScannerPlugin.Properties.Resources.github;
-            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.reportAIssueToolStripMenuItem,
-            this.readmeToolStripMenuItem});
-            this.toolStripDropDownButton1.Image = global::XrmAutomationHealthScannerPlugin.Properties.Resources.github;
-            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(34, 28);
-            this.toolStripDropDownButton1.Text = "toolStripDropDownButton1";
-            // 
-            // reportAIssueToolStripMenuItem
-            // 
-            this.reportAIssueToolStripMenuItem.Name = "reportAIssueToolStripMenuItem";
-            this.reportAIssueToolStripMenuItem.Size = new System.Drawing.Size(234, 26);
-            this.reportAIssueToolStripMenuItem.Text = "Raise issue / question";
-            this.reportAIssueToolStripMenuItem.Click += new System.EventHandler(this.reportAIssueToolStripMenuItem_Click);
-            // 
-            // readmeToolStripMenuItem
-            // 
-            this.readmeToolStripMenuItem.Name = "readmeToolStripMenuItem";
-            this.readmeToolStripMenuItem.Size = new System.Drawing.Size(234, 26);
-            this.readmeToolStripMenuItem.Text = "Readme";
-            this.readmeToolStripMenuItem.Click += new System.EventHandler(this.readmeToolStripMenuItem_Click);
             // 
             // splitContainer2
             // 
@@ -238,6 +211,31 @@
             this.workflowscheckBox.Text = "Workflows";
             this.workflowscheckBox.UseVisualStyleBackColor = true;
             this.workflowscheckBox.CheckedChanged += new System.EventHandler(this.scanAutomationsButton1_Click);
+            // 
+            // toolStripDropDownButton1
+            // 
+            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.reportAIssueToolStripMenuItem,
+            this.readmeToolStripMenuItem});
+            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(67, 28);
+            this.toolStripDropDownButton1.Text = "Github";
+            // 
+            // reportAIssueToolStripMenuItem
+            // 
+            this.reportAIssueToolStripMenuItem.Name = "reportAIssueToolStripMenuItem";
+            this.reportAIssueToolStripMenuItem.Size = new System.Drawing.Size(234, 26);
+            this.reportAIssueToolStripMenuItem.Text = "Raise issue / question";
+            this.reportAIssueToolStripMenuItem.Click += new System.EventHandler(this.reportAIssueToolStripMenuItem_Click);
+            // 
+            // readmeToolStripMenuItem
+            // 
+            this.readmeToolStripMenuItem.Name = "readmeToolStripMenuItem";
+            this.readmeToolStripMenuItem.Size = new System.Drawing.Size(234, 26);
+            this.readmeToolStripMenuItem.Text = "Readme";
+            this.readmeToolStripMenuItem.Click += new System.EventHandler(this.readmeToolStripMenuItem_Click);
             // 
             // MyPluginControl
             // 
